@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.ualberta.ca/%7Eilovan/style.css"?>
+<IntelectualEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://www.ualberta.ca/%7Eilovan/PerseusArchive_metadata_schema.xsd">
+    <Title level="intelectual_entity"></Title>
+    <Location xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=""/>
+    <Agent type="" subtype=""></Agent>
+    <Event type="">
+        <EventDate></EventDate>
+    </Event>
+    <Rights>
+        <RightsStatement></RightsStatement>
+    </Rights>
+</IntelectualEntity>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- This schema is based on the principles of PREMIS, the international standard for metadata to support the preservation of digital objects. 
+    It provides encoding instructions for the metadata of an experimental archive for the preservation of interface iterations of the Perseus Project. 
+    Authors: Mihaela Ilovan, Tianyi Li, Laurentia Romaniuk, Geoffrey Rockwell and the INKE research group
+    -->
+    <xs:import namespace="http://www.w3.org/2001/XInclude" schemaLocation="http://www.w3.org/2001/XInclude"/>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/XML/2008/06/xlink.xsd"/>
+    <xs:element name="ArchiveItem">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="xi:include"/>
+                <xs:element name="Item">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="Rights"/>
+                            <xs:element name="Agents">
+                                <xs:complexType>
+                                    <xs:group maxOccurs="unbounded" ref="Agent"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Objects">
+                                <xs:complexType>
+                                    <xs:group maxOccurs="unbounded" ref="Object"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Events">
+                                <xs:complexType>
+                                    <xs:group maxOccurs="unbounded" ref="Event"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:group ref="Description"/>
+                        </xs:sequence>
+                        <xs:attribute name="type" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="web_page"/>
+                                    <xs:enumeration value="supporting_material"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="subtype" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="home_page"/>
+                                    <xs:enumeration value="advanced_search"/>
+                                    <xs:enumeration value="search_results"/>
+                                    <xs:enumeration value="collection"/>
+                                    <xs:enumeration value="collection_item"/>
+                                    <xs:enumeration value="help"/>
+                                    <xs:enumeration value="about"/>
+                                    <xs:enumeration value="news"/>
+                                    <xs:enumeration value=""/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="Agent" mixed="true">
+        <xs:sequence minOccurs="0">
+            <xs:element minOccurs="1" name="AgentNotes">
+                <xs:complexType/>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="person"/>
+                    <xs:enumeration value="organization"/>
+                    <xs:enumeration value="technology"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="subtype" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="original_location"/>
+                    <xs:enumeration value="original_author"/>
+                    <xs:enumeration value="original_medium"/>
+                    <xs:enumeration value="original_hardware"/>
+                    <xs:enumeration value="intended_user"/>
+                    <xs:enumeration value="archived_from"/>
+                    <xs:enumeration value="archived_at"/>
+                    <xs:enumeration value="archived_by"/>
+                    <xs:enumeration value="archived_with"/>
+                    <xs:enumeration value="modified_by"/>
+                    <xs:enumeration value="modified_with"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Event">
+        <xs:sequence>
+            <xs:element name="EventDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Express as: "YYYY-MM-DD"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="EventNotes"/>
+        </xs:sequence>
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="created"/>
+                    <xs:enumeration value="archived"/>
+                    <xs:enumeration value="modified"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Rights">
+        <xs:sequence>
+            <xs:element name="RightsStatement"/>
+            <xs:element minOccurs="0" name="RightsNotes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Title" mixed="true">
+        <xs:attribute name="level" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="intelectual_entity"/>
+                    <xs:enumeration value="item"/>
+                    <xs:enumeration value="object"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Location" mixed="true">
+        <xs:annotation>
+            <xs:documentation>in the xlink:href attribute, use relative paths: Relative paths change depending upon the page the links are on. There are several rules to creating a link using the relative path: 1.links in the same directory as the current page have no path information listed "filename" 2.sub-directories are listed without any preceding slashes "weekly/filename" 3.links up one directory are listed as "../filename" </xs:documentation>
+        </xs:annotation>
+        <xs:attribute ref="xlink:href" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="Object">
+        <xs:sequence>
+            <xs:group ref="Rights"/>
+            <xs:group ref="Location"/>
+            <xs:group maxOccurs="unbounded" ref="Agent"/>
+            <xs:group maxOccurs="unbounded" ref="Event"/>
+        </xs:sequence>
+        <xs:attribute name="type" use="required" form="unqualified">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="screenshot"/>
+                    <xs:enumeration value="web_page_complete"/>
+                    <xs:enumeration value="pdf"/>
+                    <xs:enumeration value="video"/>
+                    <xs:enumeration value="other"/>
+                    <xs:enumeration value="MAFF"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:group name="Rights">
+        <xs:sequence>
+            <xs:element name="Rights">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="Rights"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Location">
+        <xs:sequence>
+            <xs:element name="Location">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="Location"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Title">
+        <xs:sequence>
+            <xs:element name="Title">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="Title"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Object">
+        <xs:sequence>
+            <xs:element name="Object">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="Object"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Event">
+        <xs:sequence>
+            <xs:element name="Event">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="Event"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Agent">
+        <xs:sequence>
+            <xs:element name="Agent">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="Agent"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="IntelectualEntity">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="Title"/>
+                <xs:group ref="Location"/>
+                <xs:group maxOccurs="unbounded" ref="Agent"/>
+                <xs:group maxOccurs="unbounded" ref="Event"/>
+                <xs:group ref="Rights"/>
+                <xs:group ref="Description"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="Description">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:group name="Description">
+        <xs:sequence>
+            <xs:element name="Description" type="Description"/>
+        </xs:sequence>
+    </xs:group>
+</xs:schema>
