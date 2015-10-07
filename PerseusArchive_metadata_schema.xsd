@@ -140,6 +140,7 @@
             <xs:group ref="Location"/>
             <xs:group maxOccurs="unbounded" ref="Agent"/>
             <xs:group maxOccurs="unbounded" ref="Event"/>
+            <xs:group minOccurs="0" ref="Description"/>
         </xs:sequence>
         <xs:attribute name="type" use="required" form="unqualified">
             <xs:simpleType>
