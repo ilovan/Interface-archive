@@ -4,53 +4,53 @@
     It provides encoding instructions for the metadata of an experimental archive for the preservation of interface iterations of the Perseus Project. 
     Authors: Mihaela Ilovan, Tianyi Li, Laurentia Romaniuk, Geoffrey Rockwell and the INKE research group
     -->
-    <xs:import namespace="http://www.w3.org/2001/XInclude" schemaLocation="http://www.w3.org/2001/XInclude"/>
-    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/XML/2008/06/xlink.xsd"/>
+    <xs:import namespace="http://www.w3.org/2001/XInclude" schemaLocation="http://www.w3.org/2001/XInclude"></xs:import>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/XML/2008/06/xlink.xsd"></xs:import>
     <xs:element name="ArchiveItem">
         <xs:complexType>
             <xs:all>
-                <xs:element ref="xi:include"/>
+                <xs:element ref="xi:include"></xs:element>
                 <xs:element name="Item">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:group ref="Rights"/>
+                            <xs:group ref="Rights"></xs:group>
                             <xs:element name="Agents">
                                 <xs:complexType>
-                                    <xs:group maxOccurs="unbounded" ref="Agent"/>
+                                    <xs:group maxOccurs="unbounded" ref="Agent"></xs:group>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="Objects">
                                 <xs:complexType>
-                                    <xs:group maxOccurs="unbounded" ref="Object"/>
+                                    <xs:group maxOccurs="unbounded" ref="Object"></xs:group>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="Events">
                                 <xs:complexType>
-                                    <xs:group maxOccurs="unbounded" ref="Event"/>
+                                    <xs:group maxOccurs="unbounded" ref="Event"></xs:group>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:group ref="Description"/>
+                            <xs:group ref="Description"></xs:group>
                         </xs:sequence>
                         <xs:attribute name="type" use="required">
                             <xs:simpleType>
                                 <xs:restriction base="xs:token">
-                                    <xs:enumeration value="web_page"/>
-                                    <xs:enumeration value="supporting_material"/>
+                                    <xs:enumeration value="web_page"></xs:enumeration>
+                                    <xs:enumeration value="supporting_material"></xs:enumeration>
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
                         <xs:attribute name="subtype" use="required">
                             <xs:simpleType>
                                 <xs:restriction base="xs:token">
-                                    <xs:enumeration value="home_page"/>
-                                    <xs:enumeration value="advanced_search"/>
-                                    <xs:enumeration value="search_results"/>
-                                    <xs:enumeration value="collection"/>
-                                    <xs:enumeration value="collection_item"/>
-                                    <xs:enumeration value="help"/>
-                                    <xs:enumeration value="about"/>
-                                    <xs:enumeration value="news"/>
-                                    <xs:enumeration value=""/>
+                                    <xs:enumeration value="home_page"></xs:enumeration>
+                                    <xs:enumeration value="advanced_search"></xs:enumeration>
+                                    <xs:enumeration value="search_results"></xs:enumeration>
+                                    <xs:enumeration value="collection"></xs:enumeration>
+                                    <xs:enumeration value="collection_item"></xs:enumeration>
+                                    <xs:enumeration value="help"></xs:enumeration>
+                                    <xs:enumeration value="about"></xs:enumeration>
+                                    <xs:enumeration value="news"></xs:enumeration>
+                                    <xs:enumeration value=""></xs:enumeration>
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
@@ -62,32 +62,32 @@
     <xs:complexType name="Agent" mixed="true">
         <xs:sequence minOccurs="0">
             <xs:element minOccurs="1" name="AgentNotes">
-                <xs:complexType/>
+                <xs:complexType></xs:complexType>
             </xs:element>
         </xs:sequence>
         <xs:attribute name="type" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:token">
-                    <xs:enumeration value="person"/>
-                    <xs:enumeration value="organization"/>
-                    <xs:enumeration value="technology"/>
+                    <xs:enumeration value="person"></xs:enumeration>
+                    <xs:enumeration value="organization"></xs:enumeration>
+                    <xs:enumeration value="technology"></xs:enumeration>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
         <xs:attribute name="subtype" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:token">
-                    <xs:enumeration value="original_location"/>
-                    <xs:enumeration value="original_author"/>
-                    <xs:enumeration value="original_medium"/>
-                    <xs:enumeration value="original_hardware"/>
-                    <xs:enumeration value="intended_user"/>
-                    <xs:enumeration value="archived_from"/>
-                    <xs:enumeration value="archived_at"/>
-                    <xs:enumeration value="archived_by"/>
-                    <xs:enumeration value="archived_with"/>
-                    <xs:enumeration value="modified_by"/>
-                    <xs:enumeration value="modified_with"/>
+                    <xs:enumeration value="original_location"></xs:enumeration>
+                    <xs:enumeration value="original_author"></xs:enumeration>
+                    <xs:enumeration value="original_medium"></xs:enumeration>
+                    <xs:enumeration value="original_hardware"></xs:enumeration>
+                    <xs:enumeration value="intended_user"></xs:enumeration>
+                    <xs:enumeration value="archived_from"></xs:enumeration>
+                    <xs:enumeration value="archived_at"></xs:enumeration>
+                    <xs:enumeration value="archived_by"></xs:enumeration>
+                    <xs:enumeration value="archived_with"></xs:enumeration>
+                    <xs:enumeration value="modified_by"></xs:enumeration>
+                    <xs:enumeration value="modified_with"></xs:enumeration>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
@@ -99,31 +99,31 @@
                     <xs:documentation>Express as: "YYYY-MM-DD"</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" name="EventNotes"/>
+            <xs:element minOccurs="0" name="EventNotes"></xs:element>
         </xs:sequence>
         <xs:attribute name="type" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:token">
-                    <xs:enumeration value="created"/>
-                    <xs:enumeration value="archived"/>
-                    <xs:enumeration value="modified"/>
+                    <xs:enumeration value="created"></xs:enumeration>
+                    <xs:enumeration value="archived"></xs:enumeration>
+                    <xs:enumeration value="modified"></xs:enumeration>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
     </xs:complexType>
     <xs:complexType name="Rights">
         <xs:sequence>
-            <xs:element name="RightsStatement"/>
-            <xs:element minOccurs="0" name="RightsNotes"/>
+            <xs:element name="RightsStatement"></xs:element>
+            <xs:element minOccurs="0" name="RightsNotes"></xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Title" mixed="true">
         <xs:attribute name="level" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:token">
-                    <xs:enumeration value="intelectual_entity"/>
-                    <xs:enumeration value="item"/>
-                    <xs:enumeration value="object"/>
+                    <xs:enumeration value="intelectual_entity"></xs:enumeration>
+                    <xs:enumeration value="item"></xs:enumeration>
+                    <xs:enumeration value="object"></xs:enumeration>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
@@ -132,24 +132,27 @@
         <xs:annotation>
             <xs:documentation>in the xlink:href attribute, use relative paths: Relative paths change depending upon the page the links are on. There are several rules to creating a link using the relative path: 1.links in the same directory as the current page have no path information listed "filename" 2.sub-directories are listed without any preceding slashes "weekly/filename" 3.links up one directory are listed as "../filename" </xs:documentation>
         </xs:annotation>
-        <xs:attribute ref="xlink:href" use="required"/>
+        <xs:attribute ref="xlink:href" use="required"></xs:attribute>
     </xs:complexType>
     <xs:complexType name="Object">
         <xs:sequence>
-            <xs:group ref="Rights"/>
-            <xs:group ref="Location"/>
-            <xs:group maxOccurs="unbounded" ref="Agent"/>
-            <xs:group maxOccurs="unbounded" ref="Event"/>
+            <xs:group ref="Rights"></xs:group>
+            <xs:group ref="Location"></xs:group>
+            <xs:group maxOccurs="unbounded" ref="Agent"></xs:group>
+            <xs:group maxOccurs="unbounded" ref="Event"></xs:group>
+            <xs:sequence minOccurs="0">
+                <xs:group ref="Description"></xs:group>
+            </xs:sequence>
         </xs:sequence>
         <xs:attribute name="type" use="required" form="unqualified">
             <xs:simpleType>
                 <xs:restriction base="xs:token">
-                    <xs:enumeration value="screenshot"/>
-                    <xs:enumeration value="web_page_complete"/>
-                    <xs:enumeration value="pdf"/>
-                    <xs:enumeration value="video"/>
-                    <xs:enumeration value="other"/>
-                    <xs:enumeration value="MAFF"/>
+                    <xs:enumeration value="screenshot"></xs:enumeration>
+                    <xs:enumeration value="web_page_complete"></xs:enumeration>
+                    <xs:enumeration value="pdf"></xs:enumeration>
+                    <xs:enumeration value="video"></xs:enumeration>
+                    <xs:enumeration value="other"></xs:enumeration>
+                    <xs:enumeration value="MAFF"></xs:enumeration>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
@@ -159,7 +162,7 @@
             <xs:element name="Rights">
                 <xs:complexType>
                     <xs:complexContent>
-                        <xs:extension base="Rights"/>
+                        <xs:extension base="Rights"></xs:extension>
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
@@ -170,7 +173,7 @@
             <xs:element name="Location">
                 <xs:complexType>
                     <xs:complexContent>
-                        <xs:extension base="Location"/>
+                        <xs:extension base="Location"></xs:extension>
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
@@ -181,7 +184,7 @@
             <xs:element name="Title">
                 <xs:complexType>
                     <xs:complexContent>
-                        <xs:extension base="Title"/>
+                        <xs:extension base="Title"></xs:extension>
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
@@ -192,7 +195,7 @@
             <xs:element name="Object">
                 <xs:complexType>
                     <xs:complexContent>
-                        <xs:extension base="Object"/>
+                        <xs:extension base="Object"></xs:extension>
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
@@ -203,7 +206,7 @@
             <xs:element name="Event">
                 <xs:complexType>
                     <xs:complexContent>
-                        <xs:extension base="Event"/>
+                        <xs:extension base="Event"></xs:extension>
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
@@ -214,7 +217,7 @@
             <xs:element name="Agent">
                 <xs:complexType>
                     <xs:complexContent>
-                        <xs:extension base="Agent"/>
+                        <xs:extension base="Agent"></xs:extension>
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
@@ -223,21 +226,21 @@
     <xs:element name="IntelectualEntity">
         <xs:complexType>
             <xs:sequence>
-                <xs:group ref="Title"/>
-                <xs:group ref="Location"/>
-                <xs:group maxOccurs="unbounded" ref="Agent"/>
-                <xs:group maxOccurs="unbounded" ref="Event"/>
-                <xs:group ref="Rights"/>
-                <xs:group ref="Description"/>
+                <xs:group ref="Title"></xs:group>
+                <xs:group ref="Location"></xs:group>
+                <xs:group maxOccurs="unbounded" ref="Agent"></xs:group>
+                <xs:group maxOccurs="unbounded" ref="Event"></xs:group>
+                <xs:group ref="Rights"></xs:group>
+                <xs:group ref="Description"></xs:group>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:simpleType name="Description">
-        <xs:restriction base="xs:string"/>
+        <xs:restriction base="xs:string"></xs:restriction>
     </xs:simpleType>
     <xs:group name="Description">
         <xs:sequence>
-            <xs:element name="Description" type="Description"/>
+            <xs:element name="Description" type="Description"></xs:element>
         </xs:sequence>
     </xs:group>
 </xs:schema>
